@@ -1,0 +1,7 @@
+Ficheiros no formato original, sem alteração, renomeação ou reorganização.
+
+sincronizacao_csv/  - saída directa do nó metricas_sincronizacao.py
+
+
+Nenhum destes ficheiros foi editado. As cópias de trabalho e os ficheiros
+derivados estão nas restantes pastas desta entrega.

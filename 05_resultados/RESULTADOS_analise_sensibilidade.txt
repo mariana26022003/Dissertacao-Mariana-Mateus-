@@ -1,0 +1,49 @@
+Saída do script 03_scripts/analise_sensibilidade.py
+Executado em 2026-10-12, na pasta raiz do repositório, sobre os ficheiros publicados.
+Comando: python 03_scripts/analise_sensibilidade.py
+Ambiente: Python 3.13.16, numpy 2.5.3, scipy 1.18.1, openpyxl 3.1.5
+
+ANÁLISE DE SENSIBILIDADE — pares com correspondência confirmada nas duas estratégias
+==============================================================================
+Condições incluídas: 147   pares concluídos pelas duas estratégias: 138
+Pares com correspondência confirmada nas duas estratégias: 126
+Pares com correspondência reconstruída em pelo menos uma estratégia: 12
+    R01 repetição 14   temporal: inferido   por respostas: confirmado
+    R08 repetição  2   temporal: confirmado   por respostas: inferido
+    R08 repetição  8   temporal: confirmado   por respostas: inferido
+    R08 repetição 10   temporal: inferido   por respostas: confirmado
+    O07 repetição  6   temporal: confirmado   por respostas: inferido
+    O13 repetição  1   temporal: confirmado   por respostas: inferido
+    O13 repetição  3   temporal: inferido   por respostas: inferido
+    O13 repetição  6   temporal: confirmado   por respostas: inferido
+    O13 repetição 11   temporal: inferido   por respostas: confirmado
+    O13 repetição 13   temporal: confirmado   por respostas: inferido
+    O17 repetição  3   temporal: inferido   por respostas: confirmado
+    O17 repetição 15   temporal: inferido   por respostas: confirmado
+
+-- Tempo total de ciclo (s) (n = 126 pares) --
+    temporal             média   49.498   mediana   49.784   DP  3.105   mín.   44.793   máx.   60.472   IQR  4.095   IC 95 % [48.950; 50.045]
+    por respostas        média   46.889   mediana   46.792   DP  3.114   mín.   42.650   máx.   56.052   IQR  3.173   IC 95 % [46.340; 47.438]
+    diferença            média   -2.609   mediana   -2.538   DP  3.762   mín.  -15.417   máx.    8.878   IQR  3.392   IC 95 % [-3.272; -1.946]
+    variação relativa da média: -5.27 %
+    Shapiro-Wilk sobre as diferenças: W = 0.969   p = 0.00512   -> normalidade rejeitada
+    Wilcoxon emparelhado (teste principal): V = 1244   p = 1.927e-11
+    teste t emparelhado (verificação): t(125) = -7.784   p = 2.292e-12
+    Hodges-Lehmann = -2.708   IC 95 % = [-3.197; -2.128]
+    correlação rank-biserial = -0.689
+    diferenças nulas = 0   valores absolutos repetidos = 0
+
+-- Espera improdutiva por ciclo (s) (n = 126 pares) --
+    temporal             média    3.274   mediana    3.264   DP  0.094   mín.    3.078   máx.    3.501   IQR  0.139   IC 95 % [3.258; 3.291]
+    por respostas        média    1.061   mediana    1.065   DP  0.039   mín.    0.923   máx.    1.134   IQR  0.046   IC 95 % [1.054; 1.068]
+    diferença            média   -2.213   mediana   -2.197   DP  0.102   mín.   -2.578   máx.   -1.988   IQR  0.137   IC 95 % [-2.231; -2.195]
+    variação relativa da média: -67.59 %
+    Shapiro-Wilk sobre as diferenças: W = 0.986   p = 0.20538   -> normalidade não rejeitada
+    Wilcoxon emparelhado (teste principal): V = 0   p = 2.029e-22
+    teste t emparelhado (verificação): t(125) = -243.672   p = 3.178e-169
+    Hodges-Lehmann = -2.210   IC 95 % = [-2.230; -2.192]
+    correlação rank-biserial = -1.000
+    diferenças nulas = 0   valores absolutos repetidos = 0
+
+==============================================================================
+Fim. Os valores correspondem às Tabelas S8 e S9 e ao parágrafo que as precede no Online Resource 1.

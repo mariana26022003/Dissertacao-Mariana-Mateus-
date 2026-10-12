@@ -1,0 +1,75 @@
+Saída do script 03_scripts/testes_emparelhados.py
+Executado em 2026-10-12, na pasta raiz do repositório, sobre os ficheiros publicados.
+Comando: python 03_scripts/testes_emparelhados.py
+Ambiente: Python 3.13.16, numpy 2.5.3, scipy 1.18.1, openpyxl 3.1.5
+
+
+==============================================================================
+CAMPANHA 1 — ciclo completo, sem obstáculos
+==============================================================================
+  blocos totais: 50   blocos completos (os três planeadores): 49
+
+  -- Tempo total (s) --
+     médias: RRTConnect 33.3229  RRTstar 35.1931  PRMstar 34.5942
+     Friedman: chi2 = 10.082, gl = 2, p = 0.006468
+     Kendall W (dimensão do efeito) = 0.103
+        RRTConnect vs RRTstar     Wilcoxon p = 0.001197   Holm = 0.003592  <- significativo
+        RRTConnect vs PRMstar     Wilcoxon p = 0.01063   Holm = 0.02126  <- significativo
+           RRTstar vs PRMstar     Wilcoxon p = 0.4412   Holm = 0.4412
+
+  -- Comprimento (m) --
+     médias: RRTConnect 3.8844  RRTstar 4.3456  PRMstar 4.6777
+     Friedman: chi2 = 34.653, gl = 2, p = 2.987e-08
+     Kendall W (dimensão do efeito) = 0.354
+        RRTConnect vs RRTstar     Wilcoxon p = 0.0003254   Holm = 0.0006508  <- significativo
+        RRTConnect vs PRMstar     Wilcoxon p = 2.734e-05   Holm = 8.202e-05  <- significativo
+           RRTstar vs PRMstar     Wilcoxon p = 0.03682   Holm = 0.03682  <- significativo
+
+  -- Tempo de planeamento (s) --
+     médias: RRTConnect 4.0238  RRTstar 3.7723  PRMstar 4.0580
+     Friedman: chi2 = 12.286, gl = 2, p = 0.002149
+     Kendall W (dimensão do efeito) = 0.125
+        RRTConnect vs RRTstar     Wilcoxon p = 0.002889   Holm = 0.005779  <- significativo
+        RRTConnect vs PRMstar     Wilcoxon p = 0.3792   Holm = 0.3792
+           RRTstar vs PRMstar     Wilcoxon p = 0.0002504   Holm = 0.0007513  <- significativo
+
+  -- Taxa de sucesso (blocos = 50) --
+     sucessos: RRTConnect 49/50  RRTstar 50/50  PRMstar 50/50
+     Q de Cochran: Q = 2.000, gl = 2, p = 0.3679
+
+==============================================================================
+CAMPANHA 2 — movimento isolado, com obstáculos
+==============================================================================
+  blocos totais: 85   blocos completos (os três planeadores): 78
+
+  -- Tempo total (s) --
+     médias: RRTConnect 3.9069  RRTstar 3.8250  PRMstar 3.9304
+     Friedman: chi2 = 2.872, gl = 2, p = 0.2379
+     Kendall W (dimensão do efeito) = 0.018
+
+  -- Comprimento (m) --
+     médias: RRTConnect 2.3011  RRTstar 2.2309  PRMstar 2.4932
+     Friedman: chi2 = 5.410, gl = 2, p = 0.06686
+     Kendall W (dimensão do efeito) = 0.035
+
+  -- Tempo de planeamento (s) --
+     médias: RRTConnect 0.0916  RRTstar 0.0891  PRMstar 0.0915
+     Friedman: chi2 = 1.103, gl = 2, p = 0.5762
+     Kendall W (dimensão do efeito) = 0.007
+
+  -- Taxa de sucesso (blocos = 85) --
+     sucessos: RRTConnect 85/85  RRTstar 82/85  PRMstar 79/85
+     Q de Cochran: Q = 7.714, gl = 2, p = 0.02113
+        RRTConnect vs RRTstar     McNemar exato p = 0.25   Holm = 0.5
+        RRTConnect vs PRMstar     McNemar exato p = 0.03125   Holm = 0.09375
+           RRTstar vs PRMstar     McNemar exato p = 0.375   Holm = 0.5
+
+==============================================================================
+TAXA DE SUCESSO DO CICLO — temporal vs. por respostas (emparelhado)
+==============================================================================
+  condições no desenho nominal: 160 | excluídas por falta de registo primário: 13
+  pares = 147
+  ambos sucesso = 138   só temporal = 5   só por respostas = 4   ambos falha = 0
+  temporal 143/147 = 97.28 %   por respostas 142/147 = 96.60 %
+  McNemar exato (binomial sobre os 9 pares discordantes): p = 1.0000
+  diferença de proporções emparelhadas = -0.68 pp   IC 95 % = [-4.68; +3.32] pp
