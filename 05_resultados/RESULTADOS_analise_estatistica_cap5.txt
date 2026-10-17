@@ -1,0 +1,174 @@
+Saída do script 03_scripts/analise_estatistica_cap5.py
+Executado em 2026-10-12, na pasta raiz do repositório, sobre os ficheiros publicados.
+Comando: python 03_scripts/analise_estatistica_cap5.py
+Ambiente: Python 3.13.16, numpy 2.5.3, scipy 1.18.1, openpyxl 3.1.5
+
+ANÁLISE ESTATÍSTICA DO CAPÍTULO 5
+Todos os valores são calculados a partir dos ficheiros de ensaios.
+
+==============================================================================
+SECÇÃO 5.4 — SUPERVISÃO TEMPORAL vs. BASEADA EM RESPOSTAS
+==============================================================================
+
+Condições no desenho nominal: 160 por estratégia
+Excluídas por falta de registo primário: 13
+    R10 repetição 20 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O03 repetição 16 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O03 repetição 17 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O03 repetição 18 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O03 repetição 19 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O03 repetição 20 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O13 repetição 17 — Ausência de registo primário da estratégia ESTADOS; par excluído para preservar o desenho emparelhado.
+    O13 repetição 18 — Ausência de registo primário da estratégia ESTADOS; par excluído para preservar o desenho emparelhado.
+    O13 repetição 19 — Ausência de registo primário da estratégia ESTADOS; par excluído para preservar o desenho emparelhado.
+    O13 repetição 20 — Ausência de registo primário da estratégia ESTADOS; par excluído para preservar o desenho emparelhado.
+    O17 repetição 18 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O17 repetição 19 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+    O17 repetição 20 — Ausência de registo primário da estratégia TEMPORAL; par excluído para preservar o desenho emparelhado.
+Condições incluídas: 147 por estratégia  (294 ciclos)
+Pares concluídos com sucesso nas duas estratégias: 138
+
+Base de cada comparação:
+    tempos e espera improdutiva -> 138 pares
+    taxas de sucesso ----------> 147 pares
+
+-- Tempo de ciclo, supervisão temporal --
+    n = 138   média = 49.404 s   mediana = 49.471 s
+    desvio-padrão = 3.023   IQR = 4.054   mín. = 44.793   máx. = 60.472
+    IC 95 % = [48.895; 49.913]
+
+-- Tempo de ciclo, supervisão baseada em respostas --
+    n = 138   média = 47.011 s   mediana = 46.772 s
+    desvio-padrão = 3.238   IQR = 3.170   mín. = 42.650   máx. = 56.052
+    IC 95 % = [46.466; 47.556]
+
+-- Comparação emparelhada do tempo de ciclo --
+    diferença média = -2.393 s   (-4.84 %)
+    Shapiro-Wilk sobre as diferenças: p = 0.00256   -> normalidade rejeitada
+    Wilcoxon emparelhado (teste principal): p = 5.956e-11
+    teste t emparelhado (verificação): t(137) = -7.487   p = 7.748e-12
+    Hodges-Lehmann = -2.508 s   IC 95 % = [-3.001; -1.941] s
+    correlação rank-biserial = -0.642
+
+-- Espera improdutiva --
+    temporal: 3.270 ± 0.092 s
+    por respostas: 1.062 ± 0.040 s
+    redução relativa: 67.53 %
+    Shapiro-Wilk sobre as diferenças: p = 0.1197   -> normalidade não rejeitada
+    Hodges-Lehmann = -2.205 s   IC 95 % = [-2.223; -2.188] s
+    Wilcoxon emparelhado (teste principal): p = 2.156e-24
+    teste t emparelhado (verificação): t(137) = -258.011   p = 5.535e-186
+
+-- Taxa de sucesso do ciclo (McNemar exato, sobre os pares completos) --
+    temporal: 143/147 = 97.28 %
+    por respostas: 142/147 = 96.60 %
+    ambos sucesso = 138   só temporal = 5   só por respostas = 4   ambos falha = 0
+    McNemar exato: p = 1.0000
+    diferença de proporções emparelhadas = -0.68 pp   IC 95 % = [-4.68; +3.32] pp
+    (o teste de Fisher não é aplicável: as amostras são emparelhadas)
+
+-- Comparação por cenário (exploratória, com correção de Holm) --
+      cenário  pares   temporal  respostas  melhoria       HL              IC 95 %          p       Holm
+          R01     18     50.269     47.950     4.61%   -2.144      [-4.879; 0.301]     0.0665     0.2661
+          R04     20     46.273     43.814     5.31%   -2.512     [-3.232; -2.061]     0.0014     0.0100  *
+          R08     17     48.124     46.990     2.36%   -1.045      [-3.002; 0.624]     0.1901     0.5703
+          R10     15     50.620     49.262     2.68%   -0.980      [-3.633; 1.191]     0.4543     0.5703
+          O03     15     51.018     47.479     6.94%   -3.730     [-4.037; -3.328]     0.0001     0.0005  *
+          O07     20     50.889     47.743     6.18%   -3.371     [-4.613; -2.237]     0.0023     0.0140  *
+          O13     16     47.864     46.578     2.69%   -2.055      [-2.187; 1.178]     0.1928     0.5703
+          O17     17     50.658     46.944     7.33%   -3.752     [-5.831; -1.799]     0.0038     0.0192  *
+    ganho médio por cenário: com obstáculo 5.78 %   sem obstáculo 3.74 %   (entre 2.36 % e 7.33 %)
+    poupança absoluta média: com obstáculo 2.921 s   sem obstáculo 1.818 s
+
+-- Interação entre estratégia e presença de obstáculos (exploratória) --
+    sem obstáculos: n = 70   redução média = -1.865 s
+    com obstáculos: n = 68   redução média = -2.937 s
+    Mann-Whitney sobre as diferenças emparelhadas: p = 0.0191
+    Nota: os oito cenários diferem entre si em mais do que a presença de
+    obstáculos, pelo que o efeito está confundido com a geometria do percurso.
+
+==============================================================================
+SECÇÃO 5.5 — CICLO DE RECOLHA E DEPOSIÇÃO
+==============================================================================
+
+               comando  execuções   falhas      taxa
+             PICK_POSE        100        0   100.00%
+           TARGET_POSE        200        0   100.00%
+               IR_POSE        200        4    98.00%
+          FECHAR_GARRA        100        0   100.00%
+           ABRIR_GARRA        100        0   100.00%
+       TERMINAR_TAREFA        100        2    98.00%
+          REMOVER_PECA        100        0   100.00%
+                 TOTAL        900        6    99.33%
+
+    Sucesso ao nível do ciclo: 94/100 = 94,00 %
+    (as seis falhas ocorreram em seis ciclos distintos)
+
+-- Erro euclidiano de posicionamento, com o TCP corrigido --
+    n = 200   média = 0.960 mm   mediana = 0.946 mm
+    desvio-padrão = 0.381   IQR = 0.580   mín. = 0.000   máx. = 2.069
+    IC 95 % = [0.907; 1.013]
+
+==============================================================================
+SECÇÃO 5.5.5 e 5.6 — PONTO DE CONTROLO E OBSTÁCULOS
+==============================================================================
+
+-- Erro de pose, referência na flange --
+                erro X: média   5.847 mm   DP 12.186 mm
+                erro Y: média   3.876 mm   DP  6.378 mm
+                erro Z: média  46.824 mm   DP 10.787 mm
+       erro euclidiano: média  50.285 mm   DP  0.831 mm
+
+-- Erro de pose, ponto de controlo corrigido (+50 mm) --
+                erro X: média   0.406 mm   DP  0.233 mm
+                erro Y: média   0.429 mm   DP  0.239 mm
+                erro Z: média   0.573 mm   DP  0.458 mm
+       erro euclidiano: média   0.932 mm   DP  0.342 mm
+
+    Redução do erro euclidiano: 98.1 %
+
+-- Distância mínima ao obstáculo, ensaios de contorno --
+    n = 15   média = 184.539 mm   mediana = 180.713 mm
+    desvio-padrão = 83.747   IQR = 110.582   mín. = 42.056   máx. = 341.169
+    IC 95 % = [138.161; 230.917]
+
+-- Distância registada, ensaios de bloqueio (não é medida de desempenho) --
+    n = 5   média = 761.477 mm   mediana = 549.425 mm
+    desvio-padrão = 711.161   IQR = 235.235   mín. = 334.912   máx. = 2017.570
+    IC 95 % = [-121.546; 1644.500]
+
+==============================================================================
+SECÇÃO 5.7 — COMPARAÇÃO DE PLANEADORES
+==============================================================================
+
+-- Ciclo completo, sem obstáculos --
+       planeador     n   sucesso    t.plan   t.total    compr.   pontos
+      RRTConnect    50   49/50       4.024    33.323     3.884     45.3
+         RRTstar    50   50/50       3.780    35.246     4.366     44.2
+         PRMstar    50   50/50       4.056    34.565     4.666     46.9
+
+    tempo total: RRTConnect 33.3229  RRTstar 35.2465  PRMstar 34.5652
+
+    comprimento: RRTConnect 3.8844  RRTstar 4.3656  PRMstar 4.6664
+
+    tempo de planeamento: RRTConnect 4.0238  RRTstar 3.7801  PRMstar 4.0564
+
+-- Movimento isolado, com obstáculos --
+       planeador     n   sucesso    t.plan   t.total    compr.   pontos
+      RRTConnect    85   85/85       0.091     3.878     2.271     39.2
+         RRTstar    85   82/85       0.089     3.828     2.205     39.0
+         PRMstar    85   79/85       0.091     3.920     2.481     40.2
+
+    tempo total: RRTConnect 3.8778  RRTstar 3.8277  PRMstar 3.9200
+
+    comprimento: RRTConnect 2.2711  RRTstar 2.2051  PRMstar 2.4808
+
+    tempo de planeamento: RRTConnect 0.0911  RRTstar 0.0887  PRMstar 0.0912
+
+    Inferência: ver testes_emparelhados.py (Friedman + Wilcoxon com Holm,
+    Q de Cochran). Kruskal-Wallis e Mann-Whitney não são aplicáveis por os
+    três planeadores terem executado os mesmos movimentos.
+
+==============================================================================
+Fim. Os valores acima correspondem aos apresentados no Capítulo 5.
+==============================================================================
